@@ -1,0 +1,16 @@
+# - Config file for the glengine package
+# It defines the following variables
+#  GLENGINE_INCLUDE_DIRS - include directories for glengine
+#  GLENGINE_LIBRARIES    - libraries to link against
+
+# Compute paths
+get_filename_component(GLENGINE_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+set(GLENGINE_INCLUDE_DIRS "@CONF_INCLUDE_DIRS@")
+
+# Our library dependencies (contains definitions for IMPORTED targets)
+if (NOT TARGET glengine)
+include("${GLENGINE_CMAKE_DIR}/glengineTargets.cmake")
+endif()
+
+# These are IMPORTED targets created by glengineTargets.cmake
+set(GLENGINE_LIBRARIES glengine)
