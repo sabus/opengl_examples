@@ -3,11 +3,12 @@
 
 #include <QGLWidget>
 
+
 class Renderer;
 class GLWidget : public QGLWidget {
 Q_OBJECT
  public:
-  explicit GLWidget(QWidget *parent = 0);
+  explicit GLWidget(const QGLFormat& format,QWidget *parent = 0);
   void initializeGL();
   void resizeGL(int w, int h);
   void paintGL();

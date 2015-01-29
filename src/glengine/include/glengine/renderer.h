@@ -1,7 +1,6 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-#include <glm/glm.hpp>
 #include <memory>
 class Renderer {
  public:
@@ -11,6 +10,8 @@ class Renderer {
   virtual void cleanup();
   virtual void resize(int width, int height);
  private:
+  int mProgram;
+  unsigned int mBuffer;
 };
 
 #endif // RENDERER_H
