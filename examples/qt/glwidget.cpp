@@ -22,9 +22,8 @@ void GLWidget::resizeGL(int width, int height) {
 }
 
 void GLWidget::paintGL() {
-//  glClear(GL_COLOR_BUFFER_BIT);
-//  if(mRenderer)
-//    mRenderer->render();
-//  else
-//      ERROR() << "Cannot paint renderer. It is not initialized";
+  if(mRenderer)
+    mRenderer->render();
+  else
+      ERROR() << "Cannot paint renderer. It is not initialized";
 }

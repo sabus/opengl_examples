@@ -42,6 +42,10 @@ namespace glengine {
         return mIsValid;
     }
 
+    unsigned int program::getHandle() const {
+      return mProgramHandle;
+    }
+
     std::ostream& operator <<(std::ostream& os,const program& prog) {
         return os << "Program[" << prog.mProgramHandle <<"]: Valid: " << prog.isValid();
     }

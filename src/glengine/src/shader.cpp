@@ -1,6 +1,7 @@
 #include <glengine/shader.h>
 #include <GL/glew.h>
 #include <glengine/logger.h>
+
 namespace glengine {
 shader::shader(int vertexType,const std::string source) :mShaderSource(std::move(source)), mShaderType(vertexType), mIsValid(false) {
     assert((vertexType == GL_VERTEX_SHADER ||

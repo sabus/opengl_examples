@@ -2,6 +2,7 @@
 #define RENDERER_H
 
 #include <memory>
+#include <glengine/program.h>
 class Renderer {
  public:
   Renderer();
@@ -10,7 +11,7 @@ class Renderer {
   virtual void cleanup();
   virtual void resize(int width, int height);
  private:
-  int mProgram;
+  glengine::program* mProgram;
   unsigned int mBuffer;
 };
 
