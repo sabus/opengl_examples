@@ -10,5 +10,5 @@ configure_file(logger.properties logger.properties COPYONLY)
 include_directories(${GLENGINE_INCLUDE_DIRS} ${GLFW_INCLUDE_DIRS})
 aux_source_directory(. SRC_LIST)
 add_executable(${PROJECT_NAME} ${SRC_LIST})
-target_link_libraries(${PROJECT_NAME} ${GLENGINE_LIBRARIES} ${GLFW_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${GLFW_LIBRARIES} ${GLENGINE_LIBRARIES})
 

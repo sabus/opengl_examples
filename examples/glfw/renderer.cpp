@@ -1,6 +1,6 @@
 #include <cstdlib>
 #include <iostream>
-#include <glengine/renderer.h>
+#include <renderer.h>
 #include <glengine/logger.h>
 #include <vector>
 #include <string>

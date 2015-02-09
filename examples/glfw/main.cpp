@@ -9,7 +9,7 @@
 #include <GLFW/glfw3.h>
 #include <glengine/logger.h>
 #include <log4cpp/PropertyConfigurator.hh>
-#include <glengine/renderer.h>
+#include <renderer.h>
 GLFWwindow* window;
 
 
