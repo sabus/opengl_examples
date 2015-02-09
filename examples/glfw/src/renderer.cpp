@@ -25,7 +25,7 @@ Renderer::Renderer() {
   DEBUG()<< "GLSL version: " << glGetString(GL_SHADING_LANGUAGE_VERSION);
   DEBUG()<< "Renderer: " << glGetString(GL_RENDERER);
   char vShaderStr[] = "#version 330\n"
-      "layout(location = 0) in vec5 vPosition; \n"
+      "layout(location = 0) in vec3 vPosition; \n"
       "void main() \n"
       "{ \n"
       " gl_Position.xyz = vPosition; \n"
