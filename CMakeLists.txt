@@ -31,8 +31,8 @@ ExternalProject_Add(
 	URL "https://github.com/glfw/glfw/archive/3.1.tar.gz"
 	INSTALL_COMMAND ""
 	LOG_DOWNLOAD ON
-	LOG_BUILD ON
-	LOG_CONFIGURE ON
+	#	LOG_BUILD ON
+	#	LOG_CONFIGURE ON
 	)
 
 ExternalProject_Get_Property(GLFW source_dir)
@@ -44,7 +44,7 @@ add_library(${GLFW_LIBRARY} UNKNOWN IMPORTED)
 set_property(TARGET ${GLFW_LIBRARY} PROPERTY IMPORTED_LOCATION
 	${GLFW_LIBRARY_PATH} )
 add_dependencies(${GLFW_LIBRARY} GLFW) 
-set(GLFW_LIBRARIES ${GLFW_LIBRARY})
+set(GLFW_LIBRARIES ${GLFW_LIBRARY} Xinerama Xrandr Xi Xxf86vm Xcursor)
 endif(DOWNLOAD_THIRD_PARTY_LIBS)
 
 add_subdirectory(src)

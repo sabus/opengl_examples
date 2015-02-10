@@ -6,12 +6,15 @@ compiler:
 install:
   - sudo apt-add-repository ppa:ubuntu-sdk-team/ppa -y
   - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+  - sudo add-apt-repository ppa:kalakris/cmake -y
   - sudo apt-get update -qq
-  - sudo apt-get install liblog4cpp5-dev libqt5opengl5-dev
+  - sudo apt-get install liblog4cpp5-dev x11proto-xf86vidmode-dev libqt5opengl5-dev xorg-dev libglu1-mesa-dev
   - sudo apt-get install libglew-dev libglm-dev
   - sudo apt-get install gcc-4.8 g++-4.8
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90
+  - sudo apt-get install cmake 
 script:
   - wget https://gist.github.com/sabus/787d56cfebd35f251bff/raw/f6e00c3c00a3f970e1652cf8cd1d0b1e03bc0b5e/FindGLEW.cmake -P cmake
   - mkdir build && cd build
-  - cmake ../
+  - cmake -DBUILD_EXAMPLES=ON -DDOWNLOAD_THIRD_PARTY_LIBS=ON ../
   - make
