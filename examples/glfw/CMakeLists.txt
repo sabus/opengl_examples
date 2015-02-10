@@ -2,7 +2,6 @@ project(opengl_with_glfw)
 cmake_minimum_required(VERSION 2.8.7)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Instruct CMake to run moc automatically when needed.
-
 find_package(PkgConfig REQUIRED)
 pkg_search_module(GLFW REQUIRED glfw3)
 find_package(glengine REQUIRED) #defines GLENGINE_INCLUDE_DIRS GLENGINE_LIBRARIES
