@@ -4,8 +4,6 @@ cmake_minimum_required(VERSION 2.8.7)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
 find_package(log4cpp REQUIRED)
-find_package(PkgConfig REQUIRED)
-pkg_search_module(GLFW REQUIRED glfw3)
 
 set(CONF_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}" "${PROJECT_BINARY_DIR}" "${OPENGL_INCLUDE_DIR}" "${GLEW_INCLUDE_DIRS}" "${LOG4CPP_INCLUDE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}")
 include_directories(.)
