@@ -5,7 +5,7 @@ option(BUILD_EXAMPLES "Build examples" OFF)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 option(DOWNLOAD_THIRD_PARTY_LIBS OFF)
-
+option(APITRACE_DEBUG OFF)
 # Instruct CMake to run moc automatically when needed.
 SET(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake/;${CMAKE_MODULE_PATH}")
 add_definitions(-std=c++11)
@@ -39,7 +39,7 @@ ExternalProject_Get_Property(GLFW source_dir)
 set(GLFW_INCLUDE_DIRS ${source_dir}/include) 
 ExternalProject_Get_Property(GLFW binary_dir)
 set(GLFW_LIBRARY_PATH ${binary_dir}/src/${CMAKE_FIND_LIBRARY_PREFIXES}glfw3.a)
-set(GLFW_LIBRARY glfw)
+set(GLFW_STATIC_LIBRARY glfw)
 add_library(${GLFW_LIBRARY} UNKNOWN IMPORTED) 
 set_property(TARGET ${GLFW_LIBRARY} PROPERTY IMPORTED_LOCATION
 	${GLFW_LIBRARY_PATH} )
