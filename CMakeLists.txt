@@ -40,10 +40,10 @@ set(GLFW_INCLUDE_DIRS ${source_dir}/include)
 ExternalProject_Get_Property(GLFW binary_dir)
 set(GLFW_LIBRARY_PATH ${binary_dir}/src/${CMAKE_FIND_LIBRARY_PREFIXES}glfw3.a)
 set(GLFW_STATIC_LIBRARY glfw)
-add_library(${GLFW_LIBRARY} UNKNOWN IMPORTED) 
-set_property(TARGET ${GLFW_LIBRARY} PROPERTY IMPORTED_LOCATION
+add_library(${GLFW_STATIC_LIBRARY} STATIC IMPORTED) 
+set_property(TARGET ${GLFW_STATIC_LIBRARY} PROPERTY IMPORTED_LOCATION
 	${GLFW_LIBRARY_PATH} )
-add_dependencies(${GLFW_LIBRARY} GLFW) 
+add_dependencies(${GLFW_STATIC_LIBRARY} GLFW) 
 set(GLFW_LIBRARIES ${GLFW_LIBRARY} Xinerama Xrandr Xi Xxf86vm Xcursor)
 endif(DOWNLOAD_THIRD_PARTY_LIBS)
 

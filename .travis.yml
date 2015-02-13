@@ -16,5 +16,5 @@ install:
 script:
   - wget https://gist.github.com/sabus/787d56cfebd35f251bff/raw/f6e00c3c00a3f970e1652cf8cd1d0b1e03bc0b5e/FindGLEW.cmake -P cmake
   - mkdir build && cd build
-  - cmake -DBUILD_EXAMPLES=ON ../
+  - cmake -DBUILD_EXAMPLES=ON -DDOWNLOAD_THIRD_PARTY_LIBS=ON ../
   - make

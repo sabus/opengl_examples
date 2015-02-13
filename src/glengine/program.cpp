@@ -70,13 +70,13 @@ std::ostream& operator<<(std::ostream& os, const program& prog) {
     ss << name << " : " << properties[1] << " , " << properties[2] << "\n";
   }
   ss << "Program Uniforms:\n";
-  for (int attrib = 0; attrib < numActiveUniforms; ++attrib) {
-    glGetProgramResourceiv(prog.mProgramHandle, GL_UNIFORM, attrib,
+  for (int uniform = 0; uniform < numActiveUniforms; ++uniform) {
+    glGetProgramResourceiv(prog.mProgramHandle, GL_UNIFORM, uniform,
                            properties.size(), &properties[0], values.size(),
                            NULL, &values[0]);
 
     nameData.resize(properties[0]);  // The length of the name.
-    glGetProgramResourceName(prog.mProgramHandle, GL_UNIFORM, attrib,
+    glGetProgramResourceName(prog.mProgramHandle, GL_UNIFORM, uniform,
                              nameData.size(), NULL, &nameData[0]);
     std::string name((char*)&nameData[0], nameData.size() - 1);
     ss << name << " : " << properties[1] << " , " << properties[2] << "\n";
