@@ -4,7 +4,7 @@
 #include <string>
 
 namespace glengine {
-    std::string checkOpenGLErrors(const char *function);
+std::string checkOpenGLErrors(const char *function);
 }
 
-#endif // UTILS_H
+#endif  // UTILS_H

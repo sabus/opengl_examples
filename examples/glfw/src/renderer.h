@@ -10,9 +10,10 @@ class Renderer {
   virtual void render();
   virtual void cleanup();
   virtual void resize(int width, int height);
+
  private:
   glengine::program* mProgram;
   unsigned int mBuffer;
 };
 
-#endif // RENDERER_H
+#endif  // RENDERER_H

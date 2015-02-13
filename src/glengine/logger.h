@@ -7,7 +7,9 @@
 #define LOGGED_FROM __FILENAME__ << ":" << __LINE__ << " "
 #else
 #include <string.h>
-#define LOGGED_FROM (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__) << ":" << __LINE__ << " "
+#define LOGGED_FROM                                                \
+  (strrchr(__FILE__, '/') ? strrchr(__FILE__, '/') + 1 : __FILE__) \
+      << ":" << __LINE__ << " "
 #endif
 
 #define DEBUG() log4cpp::Category::getRoot().debugStream() << LOGGED_FROM
@@ -19,4 +21,4 @@
 #define NOTICE() log4cpp::Category::getRoot().noticeStream() << LOGGED_FROM
 #define INFO() log4cpp::Category::getRoot().infoStream() << LOGGED_FROM
 
-#endif // LOGGER_H
+#endif  // LOGGER_H
