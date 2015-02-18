@@ -1,6 +1,7 @@
 project(opengl_with_glfw)
 cmake_minimum_required(VERSION 2.8.7)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
+include(assets)
 # Instruct CMake to run moc automatically when needed.
 if(APITRACE_DEBUG)
 	include(apitrace)
@@ -19,3 +20,4 @@ target_link_libraries(${PROJECT_NAME} pthread ${GLFW_STATIC_LIBRARIES} ${GLENGIN
 if(APITRACE_DEBUG)
 	APITRACE_OUTPUT(${PROJECT_NAME})
 endif(APITRACE_DEBUG)
+COPY_ASSETS(${PROJECT_NAME})

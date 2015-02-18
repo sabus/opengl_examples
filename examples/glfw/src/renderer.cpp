@@ -8,11 +8,11 @@
 #include <glengine/program.h>
 #include <glengine/utils.h>
 #include <GL/glew.h>
+#include <fstream>
 
 Renderer::Renderer() {
   GLenum err = glewInit();
   if (GLEW_OK != err) {
-    /* Problem: glewInit failed, something is seriously wrong. */
     ERROR() << "Initialising GLEW failed with the following error: "
             << glewGetErrorString(err);
     std::exit(-1);
@@ -26,24 +26,22 @@ Renderer::Renderer() {
           << reinterpret_cast<const char*>(glGetString(GL_VERSION));
   DEBUG() << "GLSL version: " << glGetString(GL_SHADING_LANGUAGE_VERSION);
   DEBUG() << "Renderer: " << glGetString(GL_RENDERER);
-  char vShaderStr[] =
-      "#version 330\n"
-      "layout(location = 0) in vec3 vPosition; \n"
-      "void main() \n"
-      "{ \n"
-      " gl_Position.xyz = vPosition; \n"
-      "gl_Position.w = 1.0;\n"
-      "} \n";
-  char fShaderStr[] =
-      "#version 330\n"
-      "precision mediump float; \n"
-      "out vec3 fragColor; \n"
-      "void main() \n"
-      "{ \n"
-      " fragColor = vec3 ( 0.0, 1.0, 0.0 ); \n"
-      "} \n";
-  glengine::shader vertexShader(GL_VERTEX_SHADER, vShaderStr);
-  glengine::shader fragmentShader(GL_FRAGMENT_SHADER, fShaderStr);
+  std::ifstream vertexFile("assets/vertex.glsl");
+  std::string vertexShaderString;
+  if(vertexFile.is_open()) {
+	  vertexShaderString.append(std::istreambuf_iterator<char>(vertexFile),std::istreambuf_iterator<char>());
+	  vertexFile.close();
+	  INFO() << "Vertex shader: \n" << vertexShaderString;
+  }
+  std::ifstream fragmentFile("assets/fragment.glsl");
+  std::string fragmentShaderString;
+  if(fragmentFile.is_open()) {
+	  fragmentShaderString.append(std::istreambuf_iterator<char>(fragmentFile),std::istreambuf_iterator<char>());
+	  fragmentFile.close();
+	  INFO() << "Fragment shader: \n" << fragmentShaderString;
+  }
+  glengine::shader vertexShader(GL_VERTEX_SHADER, vertexShaderString);
+  glengine::shader fragmentShader(GL_FRAGMENT_SHADER, fragmentShaderString);
   mProgram = new glengine::program({vertexShader, fragmentShader});
 
   GLuint VertexArrayID;
