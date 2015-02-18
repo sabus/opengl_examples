@@ -34,6 +34,10 @@ program::program(std::vector<shader> shaders) : mIsValid(false) {
   INFO() << *this;
 }
 
+void program::use() {
+	glUseProgram(mProgramHandle);
+}
+
 program::~program() {
   if (mIsValid) glDeleteProgram(mProgramHandle);
 }
@@ -85,4 +89,3 @@ std::ostream& operator<<(std::ostream& os, const program& prog) {
   return os << ss;
 }
 }
-

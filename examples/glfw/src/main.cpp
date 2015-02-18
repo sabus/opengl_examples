@@ -54,13 +54,15 @@ int main(void) {
   // init engine
 
   do {
-    mRenderer->render();
-    // Clear the screen
-    //    glClear( GL_COLOR_BUFFER_BIT );
-    // draw
-    // Swap buffers
-    glfwSwapBuffers(window);
-    glfwPollEvents();
+    if(mRenderer->isDirty()) {
+	    mRenderer->render();
+	    // Clear the screen
+	    //    glClear( GL_COLOR_BUFFER_BIT );
+	    // draw
+	    // Swap buffers
+	    glfwSwapBuffers(window);
+	    glfwPollEvents();
+    }
 
   }  // Check if the ESC key was pressed or the window was closed
   while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS &&

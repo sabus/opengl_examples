@@ -9,6 +9,7 @@ class program {
  public:
   program(std::vector<glengine::shader>);
   bool isValid() const;
+  void use();
   unsigned int getHandle() const;
   ~program();
   friend std::ostream& operator<<(std::ostream& os, const program& prog);

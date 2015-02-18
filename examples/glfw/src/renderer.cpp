@@ -10,7 +10,7 @@
 #include <GL/glew.h>
 #include <fstream>
 
-Renderer::Renderer() {
+Renderer::Renderer():mIsDirty(true) {
   GLenum err = glewInit();
   if (GLEW_OK != err) {
     ERROR() << "Initialising GLEW failed with the following error: "
@@ -70,7 +70,7 @@ void Renderer::cleanup() {}
 
 void Renderer::render() {
   glClear(GL_COLOR_BUFFER_BIT);
-  glUseProgram(mProgram->getHandle());
+  mProgram->use();
   INFO() << glengine::checkOpenGLErrors("glUseProgram");
   glEnableVertexAttribArray(0);
   INFO() << glengine::checkOpenGLErrors("glEnableVertexAttribArray");
@@ -96,3 +96,7 @@ void Renderer::resize(int width, int height) {
 }
 
 Renderer::~Renderer() {}
+
+bool Renderer::isDirty() {
+	return mIsDirty;
+}
