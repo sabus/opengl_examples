@@ -56,6 +56,7 @@ std::ostream& operator<<(std::ostream& os, const program& prog) {
   properties.push_back(GL_NAME_LENGTH);
   properties.push_back(GL_TYPE);
   properties.push_back(GL_ARRAY_SIZE);
+  properties.push_back(GL_LOCATION);
   std::vector<GLint> values(properties.size());
   ss << "Program Attributes:\n";
   for (int attrib = 0; attrib < numActiveAttribs; ++attrib) {
@@ -67,7 +68,7 @@ std::ostream& operator<<(std::ostream& os, const program& prog) {
     glGetProgramResourceName(prog.mProgramHandle, GL_PROGRAM_INPUT, attrib,
                              nameData.size(), NULL, &nameData[0]);
     std::string name((char*)&nameData[0], nameData.size() - 1);
-    ss << name << " : " << properties[1] << " , " << properties[2] << "\n";
+    ss << name << " : " << properties[1] << " , " << properties[2] << " , location = " << properties[3] << "\n";
   }
   ss << "Program Uniforms:\n";
   for (int uniform = 0; uniform < numActiveUniforms; ++uniform) {
@@ -79,7 +80,7 @@ std::ostream& operator<<(std::ostream& os, const program& prog) {
     glGetProgramResourceName(prog.mProgramHandle, GL_UNIFORM, uniform,
                              nameData.size(), NULL, &nameData[0]);
     std::string name((char*)&nameData[0], nameData.size() - 1);
-    ss << name << " : " << properties[1] << " , " << properties[2] << "\n";
+    ss << name << " : " << properties[1] << " , " << properties[2] << " , location = " << properties[3] << "\n";
   }
   return os << ss;
 }
